@@ -104,12 +104,12 @@ Returns a list of records from the database.
 
 Optional parameters:
 
-|name | default | description|
-|- | - | -|
-|orderBy | id | The field to order the results by.|
-|orderByDesc | false | Whether or not the results should be ordered in descending order.|
-|page | 1 | The page number of results to display. Starts at page 1.|
-|pageSize | 25 | The number of results to return in a single request.|
+| name | default | description |
+| - | - | - |
+| orderBy | id | The field to order the results by. |
+| orderByDesc | false | Whether or not the results should be ordered in descending order. |
+| page | 1 | The page number of results to display. Starts at page 1. |
+| pageSize | 25 | The number of results to return in a single request. |
 
 
 **Request**
@@ -293,17 +293,17 @@ The following are attributes which can be passed into the initial configuration
 object and are available to be accessed on the pgRestifyInstance object passed
 to the post-initialization function.
 
-|property | default | description|
-|- | - | -|
-|server | undefined | This is the restify server instance to extend and is a required parameter in the initial configuration.|
-|pgConnectionString | undefined | This is the database connection string to use. It uses the format specified by the pg package. The postInit function will return an error value if this connection string is not accurate.|
-|pg | | A reference to the pg instance used.|
-|basePath | /api/generic | This is the default endpoint on the server used to bind the API to. By not making it the root URL other custom endpoints can easily be added without conflicts.|
-|hooks | new Hooks() | This is the datastructure containing any custom hook definitions. By default this is an empty definition.|
-|convertResourceToTable | user-alerts => user_alerts | A function which transforms a string from the URL into a table name.|
-|convertTableToResource | user_alerts => user-alerts | A function which transforms a string from a table name into one for a URL.|
-|convertFieldToColumn | userName => user_name | A function wich transforms a field from submitted JSON into a column name in the database.|
-|convertColumnToField | user_name => userName | A function which transforms a column name from the database into a field name in returned JSON.|
+| property | default | description |
+| - | - | - |
+| server | undefined | This is the restify server instance to extend and is a required parameter in the initial configuration. |
+| pgConnectionString | undefined | This is the database connection string to use. It uses the format specified by the pg package. The postInit function will return an error value if this connection string is not accurate. |
+| pg | | A reference to the pg instance used. |
+| basePath | /api/generic | This is the default endpoint on the server used to bind the API to. By not making it the root URL other custom endpoints can easily be added without conflicts. |
+| hooks | new Hooks() | This is the datastructure containing any custom hook definitions. By default this is an empty definition. |
+| convertResourceToTable | user-alerts => user_alerts | A function which transforms a string from the URL into a table name. |
+| convertTableToResource | user_alerts => user-alerts | A function which transforms a string from a table name into one for a URL. |
+| convertFieldToColumn | userName => user_name | A function which transforms a field from submitted JSON into a column name in the database. |
+| convertColumnToField | user_name => userName | A function which transforms a column name from the database into a field name in returned JSON. |
 
 
 
