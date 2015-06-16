@@ -1,7 +1,6 @@
 {
   "name": "pg-restify",
   "author": "Andrew Carlson <andrewc0101@gmail.com>",
-  "private": true,
   "version": "0.1.0",
   "description": "Creates a generic REST API for a postgres database using restify.",
   "license": "MIT",
