@@ -105,7 +105,7 @@ Returns a list of records from the database.
 Optional parameters:
 
 | name | default | description |
-| - | - | - |
+| --- | --- | --- |
 | orderBy | id | The field to order the results by. |
 | orderByDesc | false | Whether or not the results should be ordered in descending order. |
 | page | 1 | The page number of results to display. Starts at page 1. |
