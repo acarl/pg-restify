@@ -294,7 +294,7 @@ object and are available to be accessed on the pgRestifyInstance object passed
 to the post-initialization function.
 
 | property | default | description |
-| - | - | - |
+| --- | --- | --- |
 | server | undefined | This is the restify server instance to extend and is a required parameter in the initial configuration. |
 | pgConnectionString | undefined | This is the database connection string to use. It uses the format specified by the pg package. The postInit function will return an error value if this connection string is not accurate. |
 | pg | | A reference to the pg instance used. |
