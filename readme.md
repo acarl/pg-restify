@@ -1,4 +1,4 @@
-#pg-restify
+# pg-restify
 
 This package allows you to automatically generate a RESTful API by
 just pointing to any PostgreSQL schema.
@@ -42,7 +42,7 @@ pgRestify.initialize({
 
 ```
 
-##REST API Support
+## REST API Support
 
 After the initialize function is called a full REST API for the pg_restify
 database is available. Below are examples of the API actions available.
@@ -58,7 +58,7 @@ create table user_alert_messages (
 
 ---
 
-###Create
+### Create
 
 Inserts a new record into the database.
 
