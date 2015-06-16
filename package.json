@@ -1,0 +1,32 @@
+{
+  "name": "pg-restify",
+  "author": "Andrew Carlson <andrewc0101@gmail.com>",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Creates a generic REST API for a postgres database using restify.",
+  "license": "MIT",
+  "engines": {
+    "node": ">= 0.10.0"
+  },
+  "main": "lib/index.js",
+  "scripts": {
+    "test": "grunt"
+  },
+  "dependencies": {
+    "async": "^1.0.0",
+    "restify": "^3.0.0",
+    "pg": "^4.3.0",
+    "sql-bricks-postgres": "^0.4.0"
+  },
+  "devDependencies": {
+    "bunyan": "^1.2.3",
+    "grunt": "^0.4.5",
+    "grunt-contrib-jshint": "^0.10.0",
+    "grunt-mocha-istanbul": "^2.2.0",
+    "istanbul": "^0.3.5",
+    "memorystream": "^0.3.1",
+    "mocha": "^2.2.1",
+    "should": "^4.4.1",
+    "supertest": "^0.15.0"
+  }
+}
