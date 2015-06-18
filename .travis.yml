@@ -7,4 +7,5 @@ node_js:
 addons:
   postgresql: "9.3"
 before_script:
+  - npm install -g grunt-cli
   - psql -c 'create database pg_restify;' -U postgres
