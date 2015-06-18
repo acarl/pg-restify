@@ -1,9 +1,24 @@
 {
   "name": "pg-restify",
-  "author": "Andrew Carlson <andrewc0101@gmail.com>",
   "version": "0.1.2",
   "description": "Creates a generic REST API for a postgres database using restify.",
+  "keywords": [
+    "rest",
+    "restful",
+    "postgres",
+    "pg",
+    "database",
+    "sql",
+    "generation",
+    "generate",
+    "builder"
+  ],
+  "author": "Andrew Carlson <andrewc0101@gmail.com>",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/acarl/pg-restify.git"
+  }
   "engines": {
     "node": ">= 0.10.0"
   },
