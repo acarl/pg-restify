@@ -1,6 +1,7 @@
 # pg-restify
 
 ![build status](https://travis-ci.org/acarl/pg-restify.svg?branch=master)
+[![Coverage Status](https://coveralls.io/repos/acarl/pg-restify/badge.svg?branch=master)](https://coveralls.io/r/acarl/pg-restify?branch=master)
 ![dependencies](https://david-dm.org/acarl/pg-restify.svg)
 
 This package allows you to automatically generate a RESTful API by
