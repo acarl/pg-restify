@@ -16,8 +16,8 @@ exports.request = request(exports.fullServerPath);
 
 
 //TODO:parameterize the connection string and server port
-exports.pgConnectionString = 'pg://postgres:none@localhost/pg_restify';
-exports.invalidPgConnectionString = 'pg://postgres:none@localhost/pg_restify_invalid';
+exports.pgConnectionString = 'pg://postgres@localhost/pg_restify';
+exports.invalidPgConnectionString = 'pg://postgres@localhost/pg_restify_invalid';
 
 exports.pgRestifyInstance = null;
 

@@ -18,7 +18,7 @@
   "repository": {
     "type": "git",
     "url": "http://github.com/acarl/pg-restify.git"
-  }
+  },
   "engines": {
     "node": ">= 0.10.0"
   },
