@@ -9,3 +9,6 @@ addons:
 before_script:
   - npm install -g grunt-cli
   - psql -c 'create database pg_restify;' -U postgres
+script:
+  - npm test
+  - grunt coveralls
