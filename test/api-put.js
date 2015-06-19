@@ -217,7 +217,9 @@ describe('PUT method', function() {
           request
           .put('/api/generic/replace-me-by-hook/' + row.id)
           .send(row)
-          .end(next);
+          .end(function(err, res) {
+            next(null, res);
+          });
 
         },
         function(res, next) {
@@ -343,7 +345,9 @@ describe('PUT method', function() {
           request
           .put('/api/generic/user-alert-messages/' + row.id)
           .send(row)
-          .end(next);
+          .end(function(err, res) {
+            next(null, res);
+          });
 
         },
         function(res, next) {
@@ -407,7 +411,9 @@ describe('PUT method', function() {
           request
           .put('/api/generic/user-alert-messages/' + row.id)
           .send(row)
-          .end(next);
+          .end(function(err, res) {
+            next(null, res);
+          });
 
         },
         function(res, next) {

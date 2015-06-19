@@ -42,6 +42,6 @@
     "memorystream": "^0.3.1",
     "mocha": "^2.2.1",
     "should": "^7.0.0",
-    "supertest": "^0.15.0"
+    "supertest": "^1.0.0"
   }
 }

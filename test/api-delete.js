@@ -177,7 +177,9 @@ describe('DELETE method', function() {
 
           request
           .del('/api/generic/replace-me-by-hook/' + row.id)
-          .end(next);
+          .end(function(err, res) {
+            next(null, res);
+          });
 
         },
         function(res, next) {
@@ -302,7 +304,9 @@ describe('DELETE method', function() {
 
           request
           .del('/api/generic/user-alert-messages/' + row.id)
-          .end(next);
+          .end(function(err, res) {
+            next(null, res);
+          });
 
         },
         function(res, next) {
@@ -362,7 +366,9 @@ describe('DELETE method', function() {
 
           request
           .del('/api/generic/user-alert-messages/' + row.id)
-          .end(next);
+          .end(function(err, res) {
+            next(null, res);
+          });
 
         },
         function(res, next) {

@@ -60,8 +60,6 @@ describe('GET count method', function() {
       .get('/api/generic/replace-me-by-hook/count')
       .end(function(err, res) {
 
-        if (err) return done(err);
-
         validator(res, done);
 
       });
@@ -96,8 +94,6 @@ describe('GET count method', function() {
       .get('/api/generic/user-alert-messages/count')
       .end(function(err, res) {
 
-        if (err) return done(err);
-
         validator(res, done);
 
       });
@@ -113,8 +109,6 @@ describe('GET count method', function() {
       request
       .get('/api/generic/user-alert-messages/count')
       .end(function(err, res) {
-
-        if (err) return done(err);
 
         validator(res, done);
 

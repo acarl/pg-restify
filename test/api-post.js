@@ -248,7 +248,9 @@ describe('POST method', function() {
           request
           .post('/api/generic/replace-me-by-hook')
           .send(row)
-          .end(next);
+          .end(function(err, res){
+            next(null, res);
+          });
 
         },
         function(passedResponse, next) {
@@ -345,7 +347,9 @@ describe('POST method', function() {
           request
           .post('/api/generic/user-alert-messages')
           .send(row)
-          .end(next);
+          .end(function(err, res){
+            next(null, res);
+          });
 
         },
         function(passedResponse, next) {
@@ -387,7 +391,9 @@ describe('POST method', function() {
           request
           .post('/api/generic/user-alert-messages')
           .send(row)
-          .end(next);
+          .end(function(err, res){
+            next(null, res);
+          });
 
         },
         function(res, next) {
