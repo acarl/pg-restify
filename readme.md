@@ -3,6 +3,7 @@
 [![build status](https://travis-ci.org/acarl/pg-restify.svg?branch=master)](https://travis-ci.org/acarl/pg-restify)
 [![Coverage Status](https://coveralls.io/repos/acarl/pg-restify/badge.svg?branch=master)](https://coveralls.io/r/acarl/pg-restify?branch=master)
 [![dependencies](https://david-dm.org/acarl/pg-restify.svg)](https://david-dm.org/acarl/pg-restify)
+[![devDependency Status](https://david-dm.org/acarl/pg-restify/dev-status.svg)](https://david-dm.org/acarl/pg-restify#info=devDependencies)
 
 This package allows you to automatically generate a RESTful API by
 just pointing to any PostgreSQL schema.
