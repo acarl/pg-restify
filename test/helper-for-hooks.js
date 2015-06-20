@@ -470,7 +470,7 @@ exports.setupDatabaseErrorTest = function(eventName, next) {
 function resetData(next) {
   helper.pgRestifyInstance.hooks = new pgRestify.Hooks();
 
-  pg.connect(helper.pgRestifyInstance.pgConnectionString, function(err, client, done) {
+  pg.connect(helper.pgRestifyInstance.pgConfig, function(err, client, done) {
 
     if (err) return next(err);
 
@@ -520,7 +520,7 @@ function getUserAlertMessageForHooks(dbClient, id, next) {
 
 function getUserAlertMessageForHooksCount(next) {
 
-  pg.connect(helper.pgRestifyInstance.pgConnectionString, function(err, client, done) {
+  pg.connect(helper.pgRestifyInstance.pgConfig, function(err, client, done) {
 
     if (err) return next(err);
 

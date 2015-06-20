@@ -133,7 +133,7 @@ describe('POST method', function() {
 
     pgRestify.initialize({
       server:server,
-      pgConnectionString:helper.pgConnectionString},
+      pgConfig:helper.pgConfig},
       postInit);
 
     function postInit(err, conf) {

@@ -16,8 +16,8 @@ exports.request = request(exports.fullServerPath);
 
 
 //TODO:parameterize the connection string and server port
-exports.pgConnectionString = 'pg://postgres@localhost/pg_restify';
-exports.invalidPgConnectionString = 'pg://postgres@localhost/pg_restify_invalid';
+exports.pgConfig = 'pg://postgres@localhost/pg_restify';
+exports.invalidpgConfig = 'pg://postgres@localhost/pg_restify_invalid';
 
 exports.pgRestifyInstance = null;
 
@@ -54,7 +54,7 @@ exports.initDefaultServer = function(next) {
 
   pgRestify.initialize({
     server:server,
-    pgConnectionString:exports.pgConnectionString
+    pgConfig:exports.pgConfig
   }, postInit);
 
   function postInit(err, conf) {
@@ -79,7 +79,7 @@ exports.initDefaultServer = function(next) {
 
 exports.resetDatabase = function(next) {
 
-  pg.connect(exports.pgRestifyInstance.pgConnectionString, function(err, client, done) {
+  pg.connect(exports.pgRestifyInstance.pgConfig, function(err, client, done) {
 
     if (err) return next(err);
 

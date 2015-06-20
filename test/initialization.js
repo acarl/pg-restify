@@ -27,7 +27,7 @@ describe('initialize method', function() {
 
     pgRestify.initialize({
       server:server,
-      pgConnectionString:helper.invalidPgConnectionString},
+      pgConfig:helper.invalidpgConfig},
       postInit);
 
     function postInit(err, conf) {
@@ -43,7 +43,7 @@ describe('initialize method', function() {
 
   it('should handle an error if the connction fails after initialize', function(done){
 
-    helper.pgRestifyInstance.pgConnectionString = helper.invalidPgConnectionString;
+    helper.pgRestifyInstance.pgConfig = helper.invalidpgConfig;
 
     request
     .get('/api/generic/user-alert-messages')
