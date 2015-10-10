@@ -311,6 +311,23 @@ to the post-initialization function.
 | convertColumnToField | user_name => userName | A function which transforms a column name from the database into a field name in returned JSON. |
 
 
+### Instance functions
+
+The following available functions available on the prototype for the pgRestifyInstance.
+This is useful if you want to add additional functionality to the API.
+
+| function | description |
+| --- | --- |
+| executeWithHooks(req, res, next, eventName, innerFunction) | A function which is used to internally to execute a function wrapped with the hooks in the same transaction. |
+| convertFieldsToColumns(data) | For each key in the data object convert from a field name (api) to a column name (database). |
+| convertColumnsToFields(data) | For each key in the data object convert from a column name (database) to a field name (api). |
+| validateTable(tableName, next) | Validates the table name is accurate for the database and then calls the next callback. |
+| validateTableAndColumns(tableName, data, next) | Validate that the tableName and fields in the data are accurate for the database and then calls the next callback. |
+| refreshDatabaseSchema(next) | Gets updated schema definitions from the database for future validations. |
+| runQuery(sql, params, next) | Runs a query using the configuration of this pgRestifyInstance. |
+
+
+
 
 ## TODO
 
