@@ -52,34 +52,34 @@ exports.initDefaultServer = function(next) {
     res.send(new restify.InternalError('Internal error'));
   });
 
-  pgRestify.initialize({
-    server:server,
-    pgConfig:exports.pgConfig
-  }, postInit);
-
-  function postInit(err, conf) {
+  exports.resetDatabase(function(err) {
 
     if (err) throw err;
 
-    exports.pgRestifyInstance = conf;
+    pgRestify.initialize({
+      server:server,
+      pgConfig:exports.pgConfig
+    }, postInit);
 
-    exports.resetDatabase(function(err) {
+    function postInit(err, conf) {
 
       if (err) throw err;
 
-      exports.pgRestifyInstance.refreshDatabaseSchema(next);
+      exports.pgRestifyInstance = conf;
 
       server.listen(exports.serverPort);
 
-    });
+      return next();
 
-  }
+    }
+
+  });
 
 };
 
 exports.resetDatabase = function(next) {
 
-  pg.connect(exports.pgRestifyInstance.pgConfig, function(err, client, done) {
+  pg.connect(exports.pgConfig, function(err, client, done) {
 
     if (err) return next(err);
 
