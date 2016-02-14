@@ -1,6 +1,6 @@
 {
   "name": "pg-restify",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "Creates a generic REST API for a postgres database using restify.",
   "keywords": [
     "rest",
