@@ -267,7 +267,7 @@ hooks.addPreHookForAllResources('getList', function(req, res, dbClient, next){
       case 'orderByDesc':
         break;
       default:
-        where[key] = req.query[key];
+        res.pgRestifyWhere[key] = req.query[key];
     }
   }
   return next();
