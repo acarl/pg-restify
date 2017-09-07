@@ -253,6 +253,27 @@ hooks.addPreHookForAllResources('get', function(req, res, dbClient, next) {
 
 });
 
+// One more example for custom where
+// with this pre-hook you can call: <api-endpoint>/api/v1/message?read=0&pageSize=10
+// Will generate query with {read: 0}
+hooks.addPreHookForAllResources('getList', function(req, res, dbClient, next){
+
+  res.pgRestifyWhere = {};
+  for (key in req.query){
+    switch (key){
+      case 'pageSize':
+      case 'page':
+      case 'orderBy':
+      case 'orderByDesc':
+        break;
+      default:
+        where[key] = req.query[key];
+    }
+  }
+  return next();
+
+});
+
 // You can also specify a specific resource and event type to apply a hook to.
 hooks.addPreHookForResource('delete', 'user-alert-messages', function(req, res, dbClient, next) {
 
