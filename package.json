@@ -28,7 +28,7 @@
   },
   "dependencies": {
     "async": "^2.5.0",
-    "pg": "^4.5.0",
+    "pg": "^4.5.7",
     "restify": "^4.1.0",
     "sql-bricks-postgres": "^0.5.0"
   },
