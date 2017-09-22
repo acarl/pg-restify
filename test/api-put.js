@@ -101,7 +101,7 @@ describe('PUT method', function() {
         request
         .put('/api/generic/user-alert-messages/' + row.id)
         .send(row)
-        .expect(400, '{"code":"BadRequestError","message":"Invalid field \\"userName2\\""}')
+        .expect(400, '{"code":"BadRequest","message":"Invalid field \\"userName2\\""}')
         .end(next);
 
       },

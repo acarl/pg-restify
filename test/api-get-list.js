@@ -110,7 +110,7 @@ describe('GET list method', function() {
 
     request
     .get('/api/generic/user-alert-messages?orderBy=userName2')
-    .expect(400, '{"code":"BadRequestError","message":"Invalid orderBy field \\"userName2\\""}', done);
+    .expect(400, '{"code":"BadRequest","message":"Invalid orderBy field \\"userName2\\""}', done);
 
   });
 
@@ -118,7 +118,7 @@ describe('GET list method', function() {
 
     request
     .get('/api/generic/user-alert-messages?orderByDesc=f')
-    .expect(400, '{"code":"BadRequestError","message":"Invalid orderByDesc value \\"f\\""}', done);
+    .expect(400, '{"code":"BadRequest","message":"Invalid orderByDesc value \\"f\\""}', done);
 
   });
 
@@ -126,7 +126,7 @@ describe('GET list method', function() {
 
     request
     .get('/api/generic/user-alert-messages?page=0')
-    .expect(400, '{"code":"BadRequestError","message":"page must be > 0 but was \\"0\\""}', done);
+    .expect(400, '{"code":"BadRequest","message":"page must be > 0 but was \\"0\\""}', done);
 
   });
 
@@ -134,7 +134,7 @@ describe('GET list method', function() {
 
     request
     .get('/api/generic/user-alert-messages?page=one')
-    .expect(400, '{"code":"BadRequestError","message":"Invalid page value \\"one\\""}', done);
+    .expect(400, '{"code":"BadRequest","message":"Invalid page value \\"one\\""}', done);
 
   });
 
@@ -142,7 +142,7 @@ describe('GET list method', function() {
 
     request
     .get('/api/generic/user-alert-messages?pageSize=0')
-    .expect(400, '{"code":"BadRequestError","message":"pageSize must be > 0 but was \\"0\\""}', done);
+    .expect(400, '{"code":"BadRequest","message":"pageSize must be > 0 but was \\"0\\""}', done);
 
   });
 
@@ -150,7 +150,7 @@ describe('GET list method', function() {
 
     request
     .get('/api/generic/user-alert-messages?pageSize=one')
-    .expect(400, '{"code":"BadRequestError","message":"Invalid pageSize value \\"one\\""}', done);
+    .expect(400, '{"code":"BadRequest","message":"Invalid pageSize value \\"one\\""}', done);
 
   });
 
