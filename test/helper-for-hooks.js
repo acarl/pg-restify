@@ -2,6 +2,7 @@ var pgRestify = require('../lib/index');
 var helper = require('./helper');
 var request = helper.request;
 var restify = require('restify');
+var restifyErrors = require('restify-errors');
 var async = require('async');
 var should = require('should');
 var pg = require('pg');
@@ -154,7 +155,7 @@ exports.setupPreHookWithErrorTest = function(eventName, notEventName, next) {
           res.header('hook2', 'true');
 
           // simulate user not authorized and return a generic 404 (safer than 401)
-          return next(new restify.ResourceNotFoundError());
+          return next(new restifyErrors.ResourceNotFoundError());
         }
 
         return next();
@@ -369,7 +370,7 @@ exports.setupPostHookWithErrorTest = function(eventName, notEventName, next) {
           res.header('hook2', 'true');
 
           // now for some reason we determine the user shouldn't have access
-          return next(new restify.ResourceNotFoundError());
+          return next(new restifyErrors.ResourceNotFoundError());
 
         }
 
