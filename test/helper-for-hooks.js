@@ -5,7 +5,6 @@ var restify = require('restify');
 var restifyErrors = require('restify-errors');
 var async = require('async');
 var should = require('should');
-var pg = require('pg');
 var sql = require('sql-bricks-postgres');
 
 exports.setupPreHookWithSuccessTest = function(eventName, notEventName, next) {
@@ -469,7 +468,7 @@ exports.setupDatabaseErrorTest = function(eventName, next) {
 function resetData(next) {
   helper.pgRestifyInstance.hooks = new pgRestify.Hooks();
 
-  pg.connect(helper.pgRestifyInstance.pgConfig, function(err, client, done) {
+  helper.pgRestifyInstance.pool.connect(function(err, client, done) {
 
     if (err) return next(err);
 
@@ -519,7 +518,7 @@ function getUserAlertMessageForHooks(dbClient, id, next) {
 
 function getUserAlertMessageForHooksCount(next) {
 
-  pg.connect(helper.pgRestifyInstance.pgConfig, function(err, client, done) {
+  helper.pgRestifyInstance.pool.connect(function(err, client, done) {
 
     if (err) return next(err);
 

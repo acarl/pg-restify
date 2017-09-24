@@ -325,8 +325,7 @@ to the post-initialization function.
 | property | default | description |
 | --- | --- | --- |
 | server | undefined | This is the restify server instance to extend and is a required parameter in the initial configuration. |
-| pgConfig | undefined | This is the database connection config to use. It uses the format specified by the pg package [here](https://github.com/brianc/node-postgres/wiki/pg#parameters). The postInit function will return an error value if this connection string is not accurate. |
-| pg | | A reference to the pg instance used. |
+| pool | | A reference to the Pool instance used. |
 | basePath | /api/generic | This is the default endpoint on the server used to bind the API to. By not making it the root URL other custom endpoints can easily be added without conflicts. |
 | hooks | new Hooks() | This is the datastructure containing any custom hook definitions. By default this is an empty definition. |
 | convertResourceToTable | user-alerts => user_alerts | A function which transforms a string from the URL into a table name. |
