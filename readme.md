@@ -4,6 +4,7 @@
 [![Coverage Status](https://coveralls.io/repos/acarl/pg-restify/badge.svg?branch=master)](https://coveralls.io/r/acarl/pg-restify?branch=master)
 [![dependencies](https://david-dm.org/acarl/pg-restify.svg)](https://david-dm.org/acarl/pg-restify)
 [![devDependency Status](https://david-dm.org/acarl/pg-restify/dev-status.svg)](https://david-dm.org/acarl/pg-restify#info=devDependencies)
+<span class="badge-npmversion"><a href="https://npmjs.org/package/pg-restify" title="View this project on NPM"><img src="https://img.shields.io/npm/v/pg-restify.svg" alt="NPM version" /></a></span>
 
 This package allows you to automatically generate a RESTful API by
 just pointing to any PostgreSQL schema.
