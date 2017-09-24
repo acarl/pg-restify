@@ -453,8 +453,6 @@ exports.setupDatabaseErrorTest = function(eventName, next) {
     // validate response
     res.statusCode.should.eql(500);
 
-    res.body.should.eql({ message: 'Unexpected error' });
-
     helper.validateErrorLoggedContains('error: relation \\"user_alert_messages\\" does not exist');
 
     // reset hooks to original

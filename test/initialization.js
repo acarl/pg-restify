@@ -44,7 +44,7 @@ describe('initialize method', function() {
 
     request
     .get('/api/generic/user-alert-messages')
-    .expect(500, '{"message":"Unexpected error"}', done);
+    .expect(500, '{}', done);
 
   });
 
