@@ -1,6 +1,7 @@
 var helper = require('./helper');
 var helperForHooks = require('./helper-for-hooks');
 var request = helper.request;
+var pgRestify = require('../lib/index');
 
 describe('GET list method', function() {
 
@@ -195,6 +196,59 @@ describe('GET list method', function() {
       });
 
     });
+
+  });
+
+  it('should shortcut if the prehook has already set the pgRestifyResponseBody',  function(done){
+
+    var hooks = new pgRestify.Hooks();
+    helper.pgRestifyInstance.hooks = hooks;
+
+    var alternateResponseBody = [{customResponseId: 1}, {customResponseId: 2}];
+
+    hooks.addPreHookForAllResources('getList', function(req, res, dbClient, next) {
+
+      res.pgRestifyResponseBody = alternateResponseBody;
+
+      next();
+
+    });
+
+    request
+      .get('/api/generic/alternate-response')
+      .end(function(err, res) {
+
+        res.body.should.eql(alternateResponseBody);
+
+        done();
+
+      });
+
+  });
+
+
+  it('should use a custom where clause set on the preHook if pgRestifyWhere is set',  function(done){
+
+    var hooks = new pgRestify.Hooks();
+    helper.pgRestifyInstance.hooks = hooks;
+
+    hooks.addPreHookForAllResources('getList', function(req, res, dbClient, next) {
+
+      req.pgRestifyWhere = {id: '2'};
+
+      next();
+
+    });
+
+    request
+      .get('/api/generic/user-alert-messages')
+      .end(function(err, res) {
+
+        res.body.should.eql([{id:2, userName:'a user', message:'message2'}]);
+
+        done();
+
+      });
 
   });
 
