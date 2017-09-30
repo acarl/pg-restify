@@ -259,7 +259,7 @@ hooks.addPreHookForAllResources('get', function(req, res, dbClient, next) {
 // Will generate query with {read: 0}
 hooks.addPreHookForAllResources('getList', function(req, res, dbClient, next){
 
-  res.pgRestifyWhere = {};
+  req.pgRestifyWhere = {};
   for (key in req.query){
     switch (key){
       case 'pageSize':
@@ -268,7 +268,7 @@ hooks.addPreHookForAllResources('getList', function(req, res, dbClient, next){
       case 'orderByDesc':
         break;
       default:
-        res.pgRestifyWhere[key] = req.query[key];
+        req.pgRestifyWhere[key] = req.query[key];
     }
   }
   return next();
