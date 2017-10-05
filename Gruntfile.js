@@ -5,8 +5,9 @@ module.exports = function(grunt) {
     jshint: {
       all: ['Gruntfile.js', 'lib/**/*.js', 'test/**/*.js'],
       options: {
+        esversion: 6,
         indent: 2,
-        eqeqeq: true
+        eqeqeq: true,
       }
     },
     mocha_istanbul: {

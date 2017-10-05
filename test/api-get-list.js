@@ -1,6 +1,7 @@
 var helper = require('./helper');
 var helperForHooks = require('./helper-for-hooks');
 var request = helper.request;
+var pgRestify = require('../lib/index');
 
 describe('GET list method', function() {
 
@@ -110,7 +111,7 @@ describe('GET list method', function() {
 
     request
     .get('/api/generic/user-alert-messages?orderBy=userName2')
-    .expect(400, '{"code":"BadRequestError","message":"Invalid orderBy field \\"userName2\\""}', done);
+    .expect(400, '{"code":"BadRequest","message":"Invalid orderBy field \\"userName2\\""}', done);
 
   });
 
@@ -118,7 +119,7 @@ describe('GET list method', function() {
 
     request
     .get('/api/generic/user-alert-messages?orderByDesc=f')
-    .expect(400, '{"code":"BadRequestError","message":"Invalid orderByDesc value \\"f\\""}', done);
+    .expect(400, '{"code":"BadRequest","message":"Invalid orderByDesc value \\"f\\""}', done);
 
   });
 
@@ -126,7 +127,7 @@ describe('GET list method', function() {
 
     request
     .get('/api/generic/user-alert-messages?page=0')
-    .expect(400, '{"code":"BadRequestError","message":"page must be > 0 but was \\"0\\""}', done);
+    .expect(400, '{"code":"BadRequest","message":"page must be > 0 but was \\"0\\""}', done);
 
   });
 
@@ -134,7 +135,7 @@ describe('GET list method', function() {
 
     request
     .get('/api/generic/user-alert-messages?page=one')
-    .expect(400, '{"code":"BadRequestError","message":"Invalid page value \\"one\\""}', done);
+    .expect(400, '{"code":"BadRequest","message":"Invalid page value \\"one\\""}', done);
 
   });
 
@@ -142,7 +143,7 @@ describe('GET list method', function() {
 
     request
     .get('/api/generic/user-alert-messages?pageSize=0')
-    .expect(400, '{"code":"BadRequestError","message":"pageSize must be > 0 but was \\"0\\""}', done);
+    .expect(400, '{"code":"BadRequest","message":"pageSize must be > 0 but was \\"0\\""}', done);
 
   });
 
@@ -150,7 +151,7 @@ describe('GET list method', function() {
 
     request
     .get('/api/generic/user-alert-messages?pageSize=one')
-    .expect(400, '{"code":"BadRequestError","message":"Invalid pageSize value \\"one\\""}', done);
+    .expect(400, '{"code":"BadRequest","message":"Invalid pageSize value \\"one\\""}', done);
 
   });
 
@@ -195,6 +196,59 @@ describe('GET list method', function() {
       });
 
     });
+
+  });
+
+  it('should shortcut if the prehook has already set the pgRestifyResponseBody',  function(done){
+
+    var hooks = new pgRestify.Hooks();
+    helper.pgRestifyInstance.hooks = hooks;
+
+    var alternateResponseBody = [{customResponseId: 1}, {customResponseId: 2}];
+
+    hooks.addPreHookForAllResources('getList', function(req, res, dbClient, next) {
+
+      res.pgRestifyResponseBody = alternateResponseBody;
+
+      next();
+
+    });
+
+    request
+      .get('/api/generic/alternate-response')
+      .end(function(err, res) {
+
+        res.body.should.eql(alternateResponseBody);
+
+        done();
+
+      });
+
+  });
+
+
+  it('should use a custom where clause set on the preHook if pgRestifyWhere is set',  function(done){
+
+    var hooks = new pgRestify.Hooks();
+    helper.pgRestifyInstance.hooks = hooks;
+
+    hooks.addPreHookForAllResources('getList', function(req, res, dbClient, next) {
+
+      req.pgRestifyWhere = {id: '2'};
+
+      next();
+
+    });
+
+    request
+      .get('/api/generic/user-alert-messages')
+      .end(function(err, res) {
+
+        res.body.should.eql([{id:2, userName:'a user', message:'message2'}]);
+
+        done();
+
+      });
 
   });
 

@@ -2,9 +2,9 @@ var pgRestify = require('../lib/index');
 var helper = require('./helper');
 var request = helper.request;
 var restify = require('restify');
+var restifyErrors = require('restify-errors');
 var async = require('async');
 var should = require('should');
-var pg = require('pg');
 var sql = require('sql-bricks-postgres');
 
 exports.setupPreHookWithSuccessTest = function(eventName, notEventName, next) {
@@ -154,7 +154,7 @@ exports.setupPreHookWithErrorTest = function(eventName, notEventName, next) {
           res.header('hook2', 'true');
 
           // simulate user not authorized and return a generic 404 (safer than 401)
-          return next(new restify.ResourceNotFoundError());
+          return next(new restifyErrors.ResourceNotFoundError());
         }
 
         return next();
@@ -369,7 +369,7 @@ exports.setupPostHookWithErrorTest = function(eventName, notEventName, next) {
           res.header('hook2', 'true');
 
           // now for some reason we determine the user shouldn't have access
-          return next(new restify.ResourceNotFoundError());
+          return next(new restifyErrors.ResourceNotFoundError());
 
         }
 
@@ -452,8 +452,6 @@ exports.setupDatabaseErrorTest = function(eventName, next) {
     // validate response
     res.statusCode.should.eql(500);
 
-    res.body.should.eql({ message: 'Unexpected error' });
-
     helper.validateErrorLoggedContains('error: relation \\"user_alert_messages\\" does not exist');
 
     // reset hooks to original
@@ -470,7 +468,7 @@ exports.setupDatabaseErrorTest = function(eventName, next) {
 function resetData(next) {
   helper.pgRestifyInstance.hooks = new pgRestify.Hooks();
 
-  pg.connect(helper.pgRestifyInstance.pgConfig, function(err, client, done) {
+  helper.pgRestifyInstance.pool.connect(function(err, client, done) {
 
     if (err) return next(err);
 
@@ -520,7 +518,7 @@ function getUserAlertMessageForHooks(dbClient, id, next) {
 
 function getUserAlertMessageForHooksCount(next) {
 
-  pg.connect(helper.pgRestifyInstance.pgConfig, function(err, client, done) {
+  helper.pgRestifyInstance.pool.connect(function(err, client, done) {
 
     if (err) return next(err);
 

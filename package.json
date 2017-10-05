@@ -1,6 +1,6 @@
 {
   "name": "pg-restify",
-  "version": "0.3.1",
+  "version": "0.4.0",
   "description": "Creates a generic REST API for a postgres database using restify.",
   "keywords": [
     "rest",
@@ -20,7 +20,7 @@
     "url": "http://github.com/acarl/pg-restify.git"
   },
   "engines": {
-    "node": ">= 0.10.0"
+    "node": ">= 4.0.0"
   },
   "main": "lib/index.js",
   "scripts": {
@@ -28,8 +28,9 @@
   },
   "dependencies": {
     "async": "^2.5.0",
-    "restify": "^5.2.0",
-    "pg": "^4.5.7",
+    "pg": "^7.3.0",
+    "restify": "^6.0.1",
+    "restify-errors": "^5.0.0",
     "sql-bricks-postgres": "^0.5.0"
   },
   "devDependencies": {
