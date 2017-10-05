@@ -334,6 +334,7 @@ to the post-initialization function.
 | convertFieldToColumn | userName => user_name | A function which transforms a field from submitted JSON into a column name in the database. |
 | convertColumnToField | user_name => userName | A function which transforms a column name from the database into a field name in returned JSON. |
 | tableIdColumns | {} | A map of table name to column name to use for the id field. If the table is not defined the default value of 'id' will be used for the column name. |
+| bodyParser | undefined | Customized bodyParser, the default one will be used otherwise |
 
 
 ### Instance functions
