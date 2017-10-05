@@ -5,7 +5,7 @@ var async = require('async');
 var bunyan = require('bunyan');
 var MemoryStream = require('memorystream');
 var should = require('should');
-var pg = require('pg');
+var { Pool } = require('pg');
 
 
 exports.serverPort = 8081;
@@ -16,8 +16,12 @@ exports.request = request(exports.fullServerPath);
 
 
 //TODO:parameterize the connection string and server port
-exports.pgConfig = 'pg://postgres@localhost/pg_restify';
-exports.invalidpgConfig = 'pg://postgres@localhost/pg_restify_invalid';
+exports.pgConfig = {
+  connectionString: 'pg://postgres@localhost/pg_restify'
+};
+exports.invalidpgConfig = {
+  connectionString: 'pg://postgres@localhost/pg_restify_invalid'
+};
 
 exports.pgRestifyInstance = null;
 
@@ -79,7 +83,9 @@ exports.initDefaultServer = function(next) {
 
 exports.resetDatabase = function(next) {
 
-  pg.connect(exports.pgConfig, function(err, client, done) {
+  var pool = new Pool(exports.pgConfig);
+
+  pool.connect(function(err, client, done) {
 
     if (err) return next(err);
 

@@ -69,7 +69,7 @@ describe('POST method', function() {
         request
         .post('/api/generic/user-alert-messages')
         .send(row)
-        .expect(400, '{"code":"BadRequestError","message":"Invalid field \\"badColumn\\""}', next);
+        .expect(400, '{"code":"BadRequest","message":"Invalid field \\"badColumn\\""}', next);
 
       },
       function(next) {

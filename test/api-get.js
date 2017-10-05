@@ -38,7 +38,7 @@ describe('GET by id method', function() {
 
     request
     .get('/api/generic/user-alert-messages-bad-id/1')
-    .expect(500, '{"code":"InternalServerError","message":"Multiple rows returned for resource \\"user-alert-messages-bad-id and id \\"1\\"."}', done);
+    .expect(500, '{"code":"InternalServer","message":"Multiple rows returned for resource \\"user-alert-messages-bad-id and id \\"1\\"."}', done);
 
   });
 
