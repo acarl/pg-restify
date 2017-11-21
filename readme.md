@@ -81,8 +81,35 @@ curl -X POST \
 
 **Response**
 ```
+# Header:
 HTTP 201 Created
 location: http://127.0.0.1:8080/api/generic/user-alert-messages/1
+# Body (JSON pg SQL INSERT result) example:
+{
+    "command": "INSERT",
+    "rowCount": 1,
+    "oid": 0,
+    "rows": [
+        {
+            "id": 1
+        }
+    ],
+    "fields": [
+        {
+            "name": "id",
+            "tableID": 17558,
+            "columnID": 1,
+            "dataTypeID": 23,
+            "dataTypeSize": 4,
+            "dataTypeModifier": -1,
+            "format": "text"
+        }
+    ],
+    "_parsers": [
+        null
+    ],
+    "rowAsArray": false
+}
 ```
 
 ---
