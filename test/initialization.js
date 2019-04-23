@@ -106,6 +106,44 @@ describe('initialize method', function() {
   });
 
 
+  it('should ignore a table if in ignoredTableNames', function(done) {
+
+    var client = new Client(helper.pgConfig);
+    client.connect();
+
+    // drop the id column from the test table
+
+    client.query('alter table user_alert_messages drop column if exists id;', [], function(err) {
+
+      client.end();
+
+      if (err) throw err;
+
+      var server = restify.createServer({
+        log: bunyan.createLogger({
+          name: 'restify-test-logger',
+          level: 'error'
+        })
+      });
+
+      pgRestify.initialize({
+          server:server,
+          pgConfig:helper.pgConfig,
+          ignoredTableNames: ['user_alert_messages']
+        },
+        postInit);
+
+      function postInit(err, conf) {
+
+        should(err).be.undefined();
+
+        done();
+
+      }
+
+    });
+
+  });
 
 
 
