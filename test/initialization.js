@@ -3,6 +3,7 @@ var restify = require('restify');
 var { Client } = require('pg');
 var bunyan = require('bunyan');
 var helper = require('./helper');
+var async = require('async');
 var request = helper.request;
 
 describe('initialize method', function() {
@@ -113,7 +114,14 @@ describe('initialize method', function() {
 
     // drop the id column from the test table
 
-    client.query('alter table user_alert_messages drop column if exists id;', [], function(err) {
+    async.series([
+      function (next) {
+        client.query('alter table user_alert_messages_bad_id drop column if exists id;', [], next);
+      },
+      function (next) {
+        client.query('alter table user_alert_messages drop column if exists id;', [], next);
+      }
+    ], function(err) {
 
       client.end();
 
@@ -129,7 +137,7 @@ describe('initialize method', function() {
       pgRestify.initialize({
           server:server,
           pgConfig:helper.pgConfig,
-          ignoredTableNames: ['user_alert_messages']
+          ignoredTableNames: ['user_alert_messages', 'user_alert_messages_bad_id']
         },
         postInit);
 
