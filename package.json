@@ -29,8 +29,8 @@
   "dependencies": {
     "async": "^2.6.0",
     "pg": "^7.3.0",
-    "restify": "^7.1.1",
-    "restify-errors": "^6.0.0",
+    "restify": "^8.3.1",
+    "restify-errors": "^7.0.0",
     "sql-bricks-postgres": "^0.5.0"
   },
   "devDependencies": {
